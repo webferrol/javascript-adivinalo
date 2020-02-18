@@ -60,14 +60,14 @@ const esElNumero=(valor)=>{
 }
 //capturo el click del ejercicio
 document.getElementById("b_aleatorio").addEventListener("click",()=>{
-	let bool;//almaceno es valor booleano si se acertó el número o no
+	let bool;//almaceno es valor booleano si se acertó el número o no acertó
 	if(primerClick)
 		playReset();
 	bool = esElNumero(elTextAleatorio.value);
-	if(!sw && tirada===TOPE){
+	if(!bool && tirada===TOPE){
 		alert("Se acabó. Perdiste");
 		playReset();
-	}else if(sw){
+	}else if(bool){
 		alert("ganaste");
 		playReset();
 	}
