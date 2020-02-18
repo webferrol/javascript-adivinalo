@@ -73,3 +73,43 @@ document.getElementById("b_aleatorio").addEventListener("click",()=>{
 	}
 
 });
+
+
+
+
+
+/*
+* Función que crea un mensaje en el cuerpo del documento html
+* @param objeto que produjo el evento
+* @param string. nombre de clase que se creará al nodo creado para el mesaje
+* @param string. mensaje que se quiere mostrar
+*/
+let crearMensaje=(elTarget,nombreClase,mensaje)=>{
+	let elClase = document.querySelector(`.${nombreClase}`);
+	if(elClase){//si no existe el objeto devuelve null con lo cual por lógica no puede ser true
+		elClase.parentNode.removeChild(elClase);
+	}
+	let elNuevo = document.createElement("strong");//creo elemento strong
+	elNuevo.className = nombreClase;//le añado mensaje
+	elNuevo.innerHTML = mensaje; //inserto texto
+
+	elTarget.parentNode.append(elNuevo); //añado mensaje
+
+}
+
+//Ejercicio 3
+document.querySelector("#enlace_1").addEventListener("click",e=>{
+	e.preventDefault();
+	let texto=prompt("Dame texto");
+	let minusculas=0,mayusculas=0;
+
+	for(let i=0;i<texto.length;i++){
+		if(texto.charAt(i)==" "|| !esCaracterAlfabetico(texto.charAt(i))){
+		}else if(texto.charAt(i)==texto.charAt(i).toLowerCase())
+			minusculas++;
+		else
+			mayusculas++;
+	}
+
+	crearMensaje(e.target,"ej1",`${texto}: Mayúsculas: ${mayusculas} \r Minúsculas: ${minusculas}`);
+});
